@@ -20,10 +20,11 @@ public class SuperMarket {
     public static void main(String[] arts) {
         SuperMarket supern = new SuperMarket();
         supern.startSim();
+
     }
 
     public static final int NUM_CHECKOUTS = 1;
-    public static final int NUM_CUSTOMERS = 20;
+    public static final int NUM_CUSTOMERS = 10;
 
     Checkout[] checkouts;
     List<Customer> customers;
@@ -46,13 +47,27 @@ public class SuperMarket {
 
 
     public void startSim() {
-        EventSim sim = EventSim.getInstance();
-        sim.setup(init);
-
-        sim.run();
+            EventSim sim = EventSim.getInstance();
+            sim.setup(init);
+            sim.run();
+            printStats();
     }
 
     public Checkout[] getCheckouts() {
         return checkouts;
+    }
+
+    public void printStats(){
+        for (Customer customer : customers) {
+            System.out.println("\n" + customer.name);
+            System.out.println("numProducts:      " + customer.numProducts);
+            System.out.println("beginShoppingTime:" + customer.beginShoppingTime);
+            System.out.println("shoppingDuration: " + customer.shoppingDuration);
+            System.out.println("endShoppingTime:  " + customer.endShoppingTime);
+            System.out.println("queueWaitDuration:" + customer.queueWaitDuration);
+            System.out.println("checkoutDuration: " + customer.checkoutDuration);
+            System.out.println("checkoutTime:     " + customer.checkoutTime);
+            System.out.println("leaveTime:        " + customer.leaveTime);
+        }
     }
 }

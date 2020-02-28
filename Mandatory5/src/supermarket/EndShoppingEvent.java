@@ -17,11 +17,15 @@ import eventsim.EventSim;
  */
 public class EndShoppingEvent extends Event {
     Customer customer;
+    int time;
 
 
-    public EndShoppingEvent(Customer customer) {
+    public EndShoppingEvent(int time, Customer customer) {
         super(EventSim.getClock() + customer.shoppingDuration);
         this.customer = customer;
+        this.time = time;
+        System.out.println("EndShoppingEvent created with customer: " + customer.name);
+        System.out.println("\n At time: " + time);
     }
 
 

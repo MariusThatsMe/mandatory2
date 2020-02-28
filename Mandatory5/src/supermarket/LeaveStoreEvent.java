@@ -8,6 +8,8 @@ public class LeaveStoreEvent extends Event {
     public LeaveStoreEvent(int time, Customer customer) {
         super(time);
         this.customer = customer;
+        System.out.println("LeaveStoreEvent created with customer: " + customer.name);
+        System.out.println("\n At time: " + time);
     }
 
     @Override

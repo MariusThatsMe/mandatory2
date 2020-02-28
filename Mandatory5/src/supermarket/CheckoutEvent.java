@@ -9,6 +9,8 @@ public class CheckoutEvent extends Event {
         super(time);
         this.customer = customer;
         this.checkout = checkout;
+        System.out.println("JoinCheckoutQueueEvent created with customer: " + customer.name);
+        System.out.println("\n At time: " + time);
     }
 
     @Override

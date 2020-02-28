@@ -15,7 +15,8 @@ public class JoinCheckoutQueueEvent extends Event {
         super(time);
         this.customer = customer;
         this.checkout = customer.getShop().checkouts[0];
-        System.out.println("JoinCheck: " + customer.name);
+        System.out.println("JoinCheckoutQueueEvent created with customer: " + customer.name);
+        System.out.println("\n At time: " + time);
         //checkout.addCustomer(this.customer);
     }
 /*
