@@ -19,15 +19,7 @@ public class JoinCheckoutQueueEvent extends Event {
         System.out.println("\n At time: " + time);
         //checkout.addCustomer(this.customer);
     }
-/*
-    private void chooseShortestQueue(){
-        // Hvilken datastruktur er best for sammenligning?
-        Checkout[] checkouts = customer.getShop().getCheckouts();
-        //Arrays.sort(checkouts);
-        checkout = checkouts[0];
-        checkout.checkoutQueue.add(customer); // checkout.addCustomer(customer);
-    }
-*/
+    
     private void setQueueWaitDuration(){
         customer.queueWaitDuration = checkout.calculateQueueDuration();
     }
@@ -35,8 +27,6 @@ public class JoinCheckoutQueueEvent extends Event {
 
     @Override
     public Event happen() {
-        //chooseShortestQueue();
-
         System.out.println("JoinQueue happen: " + customer.name + "\n numProd: " + customer.numProducts);
         checkout.addCustomerToQueue(customer);
         setQueueWaitDuration();

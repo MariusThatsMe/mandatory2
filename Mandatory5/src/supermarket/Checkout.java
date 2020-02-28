@@ -24,18 +24,37 @@ public class Checkout {
     SuperMarket shop;
     String name;
     LinkedList<Customer> checkoutQueue;
+    boolean open;
+    int nextCheckoutTime;
 
 
     public Checkout(SuperMarket shop, int i) {
         this.shop = shop;
         this.name = "Checkout" + i;
         checkoutQueue = new LinkedList<>();
+        open = true;
     }
 
     public void addCustomerToQueue(Customer customer){
         System.out.println("addCustomer: " + customer.name);
         checkoutQueue.add(customer);
-        System.out.println("Checkout queue: add " + checkoutQueue.size());
+        System.out.println("Checkout queue: " + checkoutQueue.size());
+    }
+    
+    public boolean getOpenCheckout(){
+        return open;
+    }
+    
+    public void setOpen(boolean i){
+        open = i;
+    }
+    
+    public int getNextCheckoutTime(){
+        return nextCheckoutTime;
+    }
+    
+    public void setNextCheckoutTime(int i){
+        nextCheckoutTime = i;
     }
 
     public void removeCustomerFromQueue(){
@@ -49,7 +68,7 @@ public class Checkout {
         else {
             int queueDuration = 0;
             for (int i = 0; i < checkoutQueue.size() - 1; i++) {
-                queueDuration = + checkoutQueue.get(i).numProducts * PROD_DURATION + PAY_DURATION;
+                queueDuration += (checkoutQueue.get(i).numProducts * PROD_DURATION) + PAY_DURATION;
             }
             return queueDuration;
         }
