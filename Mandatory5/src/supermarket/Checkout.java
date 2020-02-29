@@ -24,7 +24,7 @@ public class Checkout {
     SuperMarket shop;
     String name;
     LinkedList<Customer> checkoutQueue;
-    boolean open;
+    public boolean open;
     int nextCheckoutTime;
 
 
@@ -41,6 +41,31 @@ public class Checkout {
         System.out.println("Checkout queue: " + checkoutQueue.size());
     }
     
+    public void removeCustomerFromQueue(){
+        checkoutQueue.remove();
+    }
+
+    public int getFirstInLine(){
+        int queueDuration = 0;
+        for (int i = 0; i < 1; i++) {
+            queueDuration += (checkoutQueue.get(i).numProducts * PROD_DURATION) + PAY_DURATION;
+        }
+        return queueDuration;
+    }
+    
+    public int calculateQueueDuration(){
+        int queueDuration = 0;
+        for (int i = 0; i < checkoutQueue.size(); i++) {
+            queueDuration += (checkoutQueue.get(i).numProducts * PROD_DURATION) + PAY_DURATION;
+        }
+        return queueDuration;
+    }
+
+    public int calculateCheckoutDuration(int numProducts){
+        return numProducts * PROD_DURATION + PAY_DURATION;
+    }
+    
+    /* Flyttet disse funksjonene til JoinCheckoutQueue
     public boolean getOpenCheckout(){
         return open;
     }
@@ -56,25 +81,5 @@ public class Checkout {
     public void setNextCheckoutTime(int i){
         nextCheckoutTime = i;
     }
-
-    public void removeCustomerFromQueue(){
-        checkoutQueue.remove();
-    }
-
-    public int calculateQueueDuration(){
-        if (checkoutQueue.size() <= 1){
-            return 0;
-        }
-        else {
-            int queueDuration = 0;
-            for (int i = 0; i < checkoutQueue.size() - 1; i++) {
-                queueDuration += (checkoutQueue.get(i).numProducts * PROD_DURATION) + PAY_DURATION;
-            }
-            return queueDuration;
-        }
-    }
-
-    public int calculateCheckoutDuration(int numProducts){
-        return numProducts * PROD_DURATION + PAY_DURATION;
-    }
+    */
 }
