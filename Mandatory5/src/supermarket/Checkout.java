@@ -44,7 +44,7 @@ public class Checkout {
     public void removeCustomerFromQueue(){
         checkoutQueue.remove();
     }
-
+    
     public int getFirstInLine(){
         int queueDuration = 0;
         for (int i = 0; i < 1; i++) {
