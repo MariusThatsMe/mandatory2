@@ -42,7 +42,8 @@ public class Checkout {
     }
     
     public void removeCustomerFromQueue(){
-        checkoutQueue.remove();
+        if (!checkoutQueue.isEmpty())
+            checkoutQueue.remove();
     }
     
     public int getFirstInLine(){

@@ -12,6 +12,7 @@ public class JoinCheckoutQueueEvent extends Event {
 
     public JoinCheckoutQueueEvent(int time, Customer customer) {
         super(time);
+        shop = customer.getShop();
         this.customer = customer;
         this.checkout = customer.getShop().checkouts[0];
         System.out.println("JoinCheckoutQueueEvent created with customer: " + customer.name);
@@ -48,7 +49,7 @@ public class JoinCheckoutQueueEvent extends Event {
     }
     
     int[] sortCheckoutQueue(){ 
-        for(int i = 0; i <= sortedCheckout.length; i++){
+        for(int i = 0; i < sortedCheckout.length; i++){
             sortedCheckout[i] = shop.checkouts[i].calculateQueueDuration();
         }
         Arrays.sort(sortedCheckout);
