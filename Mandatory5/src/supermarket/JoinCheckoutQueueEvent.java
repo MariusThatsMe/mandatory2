@@ -26,6 +26,9 @@ public class JoinCheckoutQueueEvent extends Event {
         sortCheckoutQueue(); //sortedQueue[0] checkouten er alltid ledig/kortest
         int shortestQueue = sortedCheckout[0]; //for ordensskyld
         
+        while (getTime() < nextCheckoutTime)
+            checkout.open = false;
+        
         //hvis det ikke er en ledig checkout, send ham til køen
         if(!shop.checkouts[shortestQueue].open){ 
             shop.checkouts[shortestQueue].addCustomerToQueue(customer);
